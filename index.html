@@ -51,20 +51,26 @@
             border: 1px solid transparent;
         }
         .tab-btn.active {
-            background: linear-gradient(180deg, #636366 0%, #48484a 100%);
+            background: #52525b;
             color: white;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
             border: 2px solid var(--ios-orange) !important;
             transform: translateY(-1px);
         }
 
-        .btn-3d-gray {
-            background: linear-gradient(180deg, #8e8e93 0%, #636366 100%);
+        /* 立体的なオレンジボタン (保存用) */
+        .btn-3d-save {
+            background: linear-gradient(180deg, #ff9500 0%, #e67600 100%);
+            border: 1px solid #b35c00;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
-            border: 1px solid #48484a;
-            transition: all 0.1s ease;
+            transition: all 0.05s ease;
+            position: relative;
+            top: 0;
         }
-        .btn-3d-gray:active { transform: translateY(1px); background: linear-gradient(180deg, #636366 0%, #8e8e93 100%); }
+        .btn-3d-save:active:not(.opacity-50) {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2), inset 0 1px 4px rgba(0,0,0,0.3);
+        }
 
         .btn-3d-red {
             background: linear-gradient(180deg, #ff453a 0%, #d70015 100%);
@@ -74,87 +80,6 @@
         }
         .btn-3d-red:active { transform: translateY(1px); background: linear-gradient(180deg, #d70015 0%, #ff453a 100%); }
 
-        .btn-3d-orange {
-            background: linear-gradient(180deg, #ff9500 0%, #e67600 100%);
-            box-shadow: 0 4px 12px rgba(230, 118, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
-            border: 1px solid #b35c00;
-            transition: all 0.1s ease; color: white;
-        }
-        .btn-3d-orange:active { transform: translateY(2px); background: linear-gradient(180deg, #e67600 0%, #ff9500 100%); box-shadow: 0 2px 4px rgba(0,0,0,0.2), inset 0 1px 4px rgba(0,0,0,0.3); }
-
-        .input-field {
-            background-color: var(--ios-tertiary-bg);
-            border: 1px solid var(--ios-separator) !important;
-            color: var(--ios-text);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 100%; 
-            padding: 0.4rem 1rem; 
-            font-size: 1.25rem; 
-            text-align: center; 
-            height: 2.8rem; 
-            border-radius: 12px;
-        }
-        .input-field:focus {
-            border-width: 2px !important;
-            border-color: var(--ios-orange) !important;
-            background-color: var(--ios-quaternary-bg);
-            outline: none;
-            transform: scale(1.01);
-        }
-        
-        #pitch:focus { border-color: var(--ios-blue) !important; }
-        #count:focus { border-color: var(--ios-green) !important; }
-
-        .text-pitch { color: var(--ios-blue) !important; }
-        .text-count { color: var(--ios-green) !important; }
-        .text-auto { color: var(--ios-text-secondary) !important; }
-
-        .input-field::placeholder { font-size: 15px; }
-
-        #memoDim, #pitch, #count { font-size: 1.5rem; }
-        #memoDim { padding-right: 2.5rem; }
-
-        #totalLength { 
-            font-size: 1.5rem; 
-            padding-right: 4.5rem;
-        }
-        #inputNo { 
-            font-size: 1.15rem; 
-        }
-
-        .input-unit-display { position: absolute; right: 38px; font-size: 14px; color: var(--ios-text-secondary); pointer-events: none; }
-
-        .clear-input-btn { position: absolute; right: 2px; color: var(--ios-text-secondary); padding: 8px; opacity: 0.6; display: none; }
-        .input-field:not(:placeholder-shown) + .clear-input-btn { display: block; }
-
-        .mini-clear-btn {
-            position: absolute;
-            right: 6px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: linear-gradient(180deg, #8e8e93 0%, #636366 100%);
-            color: white;
-            border-radius: 8px;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-            border: 1px solid #48484a;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            opacity: 0.9;
-        }
-        .mini-clear-btn:active {
-            transform: translateY(-50%) scale(0.95);
-            background: linear-gradient(180deg, #636366 0%, #8e8e93 100%);
-        }
-
-        .result-card { background: var(--ios-secondary-bg); border-radius: 14px; border-left: 6px solid var(--ios-blue); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); }
-        .result-card-green { border-left-color: var(--ios-green); }
-
-        .ios-label { font-size: 14px; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 2px; }
         .sticky-header th { border-bottom: 2px solid var(--ios-separator); }
         .sticky-footer td { border-top: 2px solid var(--ios-separator); background-color: var(--ios-secondary-bg); }
         #historyTableBody tr { background-color: var(--ios-tertiary-bg); }
@@ -186,10 +111,6 @@
         .screen { display: none; }
         .screen.active { display: block; }
 
-        .star-mark { color: var(--ios-orange); margin-left: 4px; display: none; }
-        .star-mark.active { display: inline; }
-
-        /* 集計用インライン編集スタイル */
         .editable-memo {
             background: transparent;
             border: none;
@@ -204,7 +125,6 @@
             outline: 1px solid var(--ios-orange);
         }
 
-        /* カスタムドロップダウンメニューのスタイル */
         .memo-dropdown-item {
             padding: 12px 16px;
             font-size: 15px;
@@ -213,145 +133,144 @@
             cursor: pointer;
             transition: background-color 0.2s;
         }
-        .memo-dropdown-item:last-child {
-            border-bottom: none;
-        }
-        .memo-dropdown-item:active {
-            background-color: var(--ios-quaternary-bg);
-        }
-        /* スクロールバー非表示（Webkit用） */
-        #memoDropdownList::-webkit-scrollbar {
-            display: none;
-        }
+        .memo-dropdown-item:last-child { border-bottom: none; }
+        .memo-dropdown-item:active { background-color: var(--ios-quaternary-bg); }
+        #memoDropdownList::-webkit-scrollbar { display: none; }
+        
+        input::placeholder { font-size: 14px !important; font-weight: 400; color: #71717a !important; opacity: 1; }
+        input { outline: none; }
     </style>
 </head>
 <body class="p-4 pb-8 text-[14px]">
     <div id="swipe-container" class="max-w-md mx-auto min-h-screen">
-        <header class="flex items-baseline justify-between pt-1 pb-2 px-1">
-            <h1 class="text-[21px] font-bold tracking-tight">材料取り割付</h1>
-            <div class="text-[14px] text-gray-400 uppercase tracking-[0.2em] font-medium">KYOWA ROOF</div>
+        <header class="flex items-baseline justify-between pt-1 pb-2 px-1 border-b border-zinc-700">
+            <h1 class="text-[17px] font-bold text-white leading-none">材料取り割付</h1>
+            <p class="text-[14px] text-zinc-500 font-bold uppercase tracking-tighter">KYOWA ROOF</p>
         </header>
         
-        <div class="tab-switcher mb-3">
+        <div class="tab-switcher mt-3 mb-3">
             <button onclick="switchTab('calc')" id="tab-calc" class="tab-btn active">計算</button>
             <button onclick="switchTab('history')" id="tab-history" class="tab-btn">履歴</button>
         </div>
 
         <!-- 計算画面 -->
         <div id="screen-calc" class="screen active">
-            <div class="bg-[#1c1c1e] p-3 rounded-[20px] mb-4 space-y-1.5">
+            <div class="bg-[#1c1c1e] rounded-[20px] overflow-hidden border border-[#545458] shadow-xl mb-4">
                 
+                <!-- 備考 -->
+                <div id="field-inputNo" class="relative px-3 h-12 border-b border-[#545458] flex flex-col justify-center transition-all" onclick="setActiveField('inputNo')">
+                    <span class="text-[14px] font-bold text-[#c0c0c0] absolute top-1 left-3">備考</span>
+                    <input type="text" id="inputNo" class="w-full h-full bg-transparent text-center text-[18px] text-white font-bold outline-none pt-4" placeholder="名前、場所、番号等">
+                </div>
+
                 <!-- 寸法 (L) -->
-                <div>
-                    <label class="block ios-label text-[#ff9f0a] mb-0.5">寸法 (L)</label>
-                    <div class="relative flex items-center">
-                        <input type="text" id="memoDim" placeholder="材料の長さ" inputmode="decimal" class="input-field text-[#ff9f0a] font-medium">
-                        <button class="clear-input-btn" onclick="clearSingleField('memoDim')">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm3.59 12.17L14.17 15.59 12 13.41l-2.17 2.18-1.42-1.42L10.59 12 8.41 9.83l1.42-1.42L12 10.59l2.17-2.18 1.42 1.42L13.41 12l2.18 2.17z"/></svg>
-                        </button>
+                <div id="field-memoDim" class="relative px-3 h-12 border-b border-[#545458] flex flex-col justify-center transition-all" onclick="setActiveField('memoDim')">
+                    <span class="text-[14px] font-bold text-[#ff9f0a] absolute top-1 left-3 uppercase">寸法 (L)</span>
+                    <input type="text" id="memoDim" inputmode="none" class="w-full h-full bg-transparent text-center text-[20px] text-[#ff9f0a] font-bold outline-none font-mono pt-4" placeholder="材料の長さ">
+                    <button id="memoDropdownBtn" class="absolute right-1 top-0 bottom-0 w-8 flex items-center justify-center text-gray-500">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div id="memoDropdown" class="absolute top-full left-0 w-full bg-[#2c2c2e] border border-[#545458] rounded-xl shadow-2xl z-50 hidden overflow-hidden">
+                        <ul id="memoDropdownList" class="max-h-48 overflow-y-scroll"></ul>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="block ios-label text-[#0a84ff]">働き (＠)</label>
-                        <div class="relative flex items-center">
-                            <input type="text" id="pitch" placeholder="ピッチ" inputmode="decimal" class="input-field font-medium">
-                        </div>
+                <!-- 働き(@) ・ 数量(N) -->
+                <div class="flex border-b border-[#545458]">
+                    <div id="field-pitch" class="relative flex-1 px-3 h-12 border-r border-[#545458] flex flex-col justify-center transition-all" onclick="setActiveField('pitch')">
+                        <span id="label-pitch" class="text-[14px] font-bold absolute top-1 left-3 uppercase transition-colors text-[#0a84ff]">働き (＠)</span>
+                        <input type="text" id="pitch" inputmode="none" class="w-full h-full bg-transparent text-right text-[20px] font-bold outline-none font-mono pt-4 pr-1 text-[#0a84ff]" placeholder="0">
                     </div>
-                    <div>
-                        <label class="block ios-label text-[#30d158]">数量 (N)</label>
-                        <div class="relative flex items-center">
-                            <input type="text" id="count" placeholder="数量" inputmode="numeric" class="input-field font-medium">
-                        </div>
+                    <div id="field-count" class="relative flex-1 px-3 h-12 flex flex-col justify-center transition-all" onclick="setActiveField('count')">
+                        <span id="label-count" class="text-[14px] font-bold absolute top-1 left-3 uppercase transition-colors text-[#30d158]">数量 (N)</span>
+                        <input type="text" id="count" inputmode="none" class="w-full h-full bg-transparent text-right text-[20px] font-bold outline-none font-mono pt-4 pr-1 text-[#30d158]" placeholder="0">
                     </div>
                 </div>
 
-                <div>
-                    <div class="flex gap-2 mb-0.5">
-                        <label class="ios-label text-gray-400 mb-0 w-full text-[14px]">全幅 (W)</label>
-                    </div>
-                    <div class="relative flex items-center mb-1.5">
-                        <input type="text" id="totalLength" placeholder="施工面の張り幅" inputmode="decimal" class="input-field font-bold">
-                        <button onclick="clearSingleField('totalLength')" class="mini-clear-btn">C</button>
-                    </div>
-                    <div class="flex gap-2">
-                        <div class="relative flex-grow flex items-center">
-                            <input type="text" id="addLength" placeholder="＋加算" inputmode="decimal" class="input-field">
-                        </div>
-                        <button onclick="executeAddition()" class="w-12 h-[2.8rem] btn-3d-orange text-white rounded-xl flex items-center justify-center text-[22px] font-bold shrink-0">＋</button>
-                        <button onclick="clearAllFields()" class="w-16 h-[2.8rem] btn-3d-gray text-white rounded-xl flex items-center justify-center text-[14px] leading-[1.1] font-bold shrink-0 text-center px-1">全クリア</button>
-                    </div>
+                <!-- 全幅 (W) -->
+                <div id="field-totalLength" class="relative px-3 h-[3.5rem] border-b border-[#545458] flex flex-col justify-center transition-all ring-2 ring-inset ring-orange-500 z-10 bg-[#2c2c2e]" onclick="setActiveField('totalLength')">
+                    <span class="text-[14px] font-bold text-[#c0c0c0] absolute top-1 left-3 uppercase">全幅 (W)</span>
+                    <input type="text" id="totalLength" inputmode="none" class="w-full h-full bg-transparent text-center text-[26px] text-white font-black outline-none font-mono pt-5" placeholder="張り面幅">
+                </div>
+
+                <!-- +加算 -->
+                <div id="field-addLength" class="relative px-3 h-[3.2rem] flex flex-col justify-center transition-all" onclick="setActiveField('addLength')">
+                    <span class="text-[14px] font-bold text-[#c0c0c0] absolute top-1 left-3 uppercase">+加算</span>
+                    <input type="text" id="addLength" inputmode="none" class="w-full h-full bg-transparent text-center text-[22px] text-[#c0c0c0] font-bold outline-none font-mono pt-5" placeholder="全幅に加算">
+                </div>
+
+                <!-- テンキー -->
+                <div class="grid grid-cols-4 bg-[#2c2c2e] border-t border-[#545458]">
+                    <button onclick="handleKeypad('7')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">7</button>
+                    <button onclick="handleKeypad('8')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">8</button>
+                    <button onclick="handleKeypad('9')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">9</button>
+                    <button onclick="handleKeypad('C')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#3a3a3c] text-white">C</button>
+
+                    <button onclick="handleKeypad('4')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">4</button>
+                    <button onclick="handleKeypad('5')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">5</button>
+                    <button onclick="handleKeypad('6')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">6</button>
+                    <button onclick="handleKeypad('AC')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#3a3a3c] text-white">AC</button>
+
+                    <button onclick="handleKeypad('1')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">1</button>
+                    <button onclick="handleKeypad('2')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">2</button>
+                    <button onclick="handleKeypad('3')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">3</button>
+                    
+                    <!-- エンターボタン: 塗りつぶしスタイルに戻しました -->
+                    <button onclick="handleKeypad('⏎')" class="flex items-center justify-center text-[21px] font-bold border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#ff9f0a] text-white row-span-2 h-auto">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 10l-5 5 5 5M4 15h11a5 5 0 0 0 5-5V7"></path></svg>
+                    </button>
+
+                    <button onclick="handleKeypad('0')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">0</button>
+                    <button onclick="handleKeypad('00')" class="flex items-center justify-center text-[21px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] active:opacity-60 bg-[#1c1c1e] text-white">00</button>
+                    
+                    <!-- 保存ボタン: 立体的なデザイン -->
+                    <button onclick="handleKeypad('保存')" id="keypad-save" class="flex items-center justify-center text-[16px] font-bold h-[3.2rem] border-r border-b border-[#3a3a3c] btn-3d-save text-white opacity-50">保存</button>
                 </div>
             </div>
 
-            <div class="mb-6 bg-[#1c1c1e] p-3 rounded-[20px] space-y-3">
-                <div class="relative z-20">
-                    <div class="relative flex items-center">
-                        <span class="absolute left-4 text-[14px] font-bold text-gray-400 pointer-events-none z-10">備考</span>
-                        <input type="text" id="inputNo" placeholder="" class="input-field relative z-0 !bg-black focus:!bg-[#3a3a3c]" style="text-align: center; padding-left: 3.5rem; padding-right: 2.5rem;" autocomplete="off">
-                        
-                        <button id="memoDropdownBtn" class="absolute right-2 p-2 text-[#ff9f0a] focus:outline-none z-10" tabindex="-1">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-
-                        <div id="memoDropdown" class="absolute top-[110%] left-0 w-full bg-[#2c2c2e] border border-[#545458] rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] z-50 hidden overflow-hidden">
-                            <ul id="memoDropdownList" class="max-h-48 overflow-y-scroll">
-                            </ul>
-                        </div>
+            <!-- 結果表示 -->
+            <div id="results" class="space-y-3">
+                <div id="card-pitch" class="bg-[#1c1c1e] p-3 rounded-2xl border-2 border-[#545458] flex flex-col items-start shadow-lg transition-all opacity-60 grayscale">
+                    <div class="flex items-center justify-between w-full mb-1">
+                        <span class="text-[14px] font-bold text-gray-300 uppercase">働き基準 結果</span>
+                        <span id="remark-total-pitch" class="text-[18px] text-white font-bold"></span>
                     </div>
-                </div>
-
-                <button id="btnSave" onclick="manualSaveToHistory()" class="w-full py-2.5 btn-3d-orange rounded-xl active:opacity-60 transition-all flex items-center justify-center gap-2 text-[16px] font-bold">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-                    履歴に保存
-                </button>
-            </div>
-
-            <div id="results" class="space-y-4">
-                <div class="result-card py-2 px-4">
-                    <div class="text-[14px] text-[#8e8e93] mb-1 uppercase tracking-[0.15em] font-bold">
-                        働き基準 結果<span id="starPitch" class="star-mark">★</span>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4 border-t border-[#545458] pt-2">
+                    <div class="grid grid-cols-2 w-full gap-4 pt-1 border-t border-[#545458]">
                         <div>
-                            <div class="text-[14px] text-[#0a84ff] mb-0.5">必要数量</div>
-                            <div class="flex items-baseline gap-1 text-[#0a84ff]">
-                                <span id="resQuantity" class="text-2xl font-semibold">-</span>
-                                <span id="unitQuantity" class="text-[14px] hidden">枚</span>
+                            <span class="text-[14px] text-[#0a84ff] block uppercase">必要数量</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span id="resQuantity" class="text-[28px] font-mono font-black text-[#0a84ff]">-</span>
+                                <span id="unitQuantity" class="text-[14px] font-bold text-gray-400 hidden">枚</span>
                             </div>
                         </div>
                         <div>
-                            <div class="text-[14px] text-gray-400 mb-0.5">残材余り</div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-baseline gap-1">
-                                    <span id="resQtyRemainder" class="text-2xl font-semibold">-</span>
-                                    <span id="unitQtyRem" class="text-[14px] text-gray-300 hidden">㎜</span>
-                                </div>
+                            <span class="text-[14px] text-gray-400 block uppercase">残材余り</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span id="resQtyRemainder" class="text-[28px] font-mono font-black text-gray-300">-</span>
+                                <span id="unitQtyRem" class="text-[14px] font-bold text-gray-400 hidden">㎜</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="result-card result-card-green py-2 px-4">
-                    <div class="text-[14px] text-[#8e8e93] mb-1 uppercase tracking-[0.15em] font-bold">
-                        数量基準 結果<span id="starCount" class="star-mark">★</span>
+                <div id="card-count" class="bg-[#1c1c1e] p-3 rounded-2xl border-2 border-[#545458] flex flex-col items-start shadow-lg transition-all opacity-60 grayscale">
+                    <div class="flex items-center justify-between w-full mb-1">
+                        <span class="text-[14px] font-bold text-gray-300 uppercase">数量基準 結果</span>
+                        <span id="remark-total-count" class="text-[18px] text-white font-bold"></span>
                     </div>
-                    <div class="grid grid-cols-2 gap-4 border-t border-[#545458] pt-2">
+                    <div class="grid grid-cols-2 w-full gap-4 pt-1 border-t border-[#545458]">
                         <div>
-                            <div class="text-[14px] text-[#30d158] mb-0.5">必要働き</div>
-                            <div class="flex items-baseline gap-1 text-[#30d158]">
-                                <span id="resWidth" class="text-2xl font-semibold">-</span>
-                                <span id="unitWidth" class="text-[14px] hidden">㎜</span>
+                            <span class="text-[14px] text-[#30d158] block uppercase">必要働き</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span id="resWidth" class="text-[28px] font-mono font-black text-[#30d158]">-</span>
+                                <span id="unitWidth" class="text-[14px] font-bold text-gray-400 hidden">㎜</span>
                             </div>
                         </div>
                         <div>
-                            <div class="text-[14px] text-gray-400 mb-0.5">残材余り</div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-baseline gap-1">
-                                    <span id="resWidthRemainder" class="text-2xl font-semibold">-</span>
-                                    <span id="unitWidthRem" class="text-[14px] text-gray-300 hidden">㎜</span>
-                                </div>
+                            <span class="text-[14px] text-gray-400 block uppercase">残材余り</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span id="resWidthRemainder" class="text-[28px] font-mono font-black text-gray-300">-</span>
+                                <span id="unitWidthRem" class="text-[14px] font-bold text-gray-400 hidden">㎜</span>
                             </div>
                         </div>
                     </div>
@@ -426,6 +345,7 @@
     </div>
 
     <script>
+        // --- 要素の取得 ---
         const totalLengthInput = document.getElementById('totalLength');
         const addLengthInput = document.getElementById('addLength');
         const memoDimInput = document.getElementById('memoDim');
@@ -443,8 +363,14 @@
         const unitWidth = document.getElementById('unitWidth');
         const unitWidthRem = document.getElementById('unitWidthRem');
 
-        const starPitch = document.getElementById('starPitch');
-        const starCount = document.getElementById('starCount');
+        const cardPitch = document.getElementById('card-pitch');
+        const cardCount = document.getElementById('card-count');
+        const labelPitch = document.getElementById('label-pitch');
+        const labelCount = document.getElementById('label-count');
+        const keypadSave = document.getElementById('keypad-save');
+
+        const remarkTotalPitch = document.getElementById('remark-total-pitch');
+        const remarkTotalCount = document.getElementById('remark-total-count');
 
         const historyTableBody = document.getElementById('historyTableBody');
         const totalQtySum = document.getElementById('totalQtySum');
@@ -458,35 +384,358 @@
         const memoDropdownList = document.getElementById('memoDropdownList');
         const memoDropdownBtn = document.getElementById('memoDropdownBtn');
 
+        // --- 状態管理 ---
         let historyData = [];
         let currentTab = 'calc';
         let touchStartX = 0;
         let touchStartY = 0;
+        let activeField = 'totalLength';
+        let isNewEntry = true;
         let inputSource = null;
 
-        window.onload = function() {
-            const savedHistory = localStorage.getItem('waritsuke_history');
-            if (savedHistory) { try { historyData = JSON.parse(savedHistory); updateHistoryTable(false); } catch(e) {} }
-            const savedInputs = localStorage.getItem('waritsuke_inputs');
-            if (savedInputs) {
-                try {
-                    const inputs = JSON.parse(savedInputs);
-                    totalLengthInput.value = inputs.totalLength || "";
-                    memoDimInput.value = inputs.memoDim || "";
-                    pitchInput.value = inputs.pitch || "";
-                    countInput.value = inputs.count || "";
-                    inputNo.value = inputs.inputNo || "";
-                    if (pitchInput.value !== "") inputSource = 'pitch';
-                    else if (countInput.value !== "") inputSource = 'count';
-                    [totalLengthInput, memoDimInput, pitchInput, countInput, inputNo].forEach(el => { 
-                        if (el) { formatInputDisplay(el); }
-                    });
-                    calculate();
-                } catch(e) {}
+        // --- 関数定義 ---
+
+        function parseValue(val) { 
+            if (!val) return NaN; 
+            let str = val.toString().replace(/[０-９．－]/g, function(s) {
+                return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+            });
+            return parseFloat(str.replace(/[^-0-9.]/g, '')); 
+        }
+
+        function formatNumber(num) { return (num === null || isNaN(num) || num === undefined) ? "-" : Math.round(num).toLocaleString('ja-JP'); }
+
+        function formatInputDisplay(input) {
+            if (!input || input.id === 'inputNo' || input.id === 'addLength') return;
+            let num = parseValue(input.value);
+            if (isNaN(num)) { input.value = ""; return; }
+            input.value = num.toLocaleString('ja-JP');
+        }
+
+        function updateRemarkTotals() {
+            const currentRem = inputNo.value.trim();
+            if(!currentRem) {
+                remarkTotalPitch.innerHTML = "";
+                remarkTotalCount.innerHTML = "";
+                return;
             }
-            initSwipeGestures();
+            let pSum = 0;
+            let cSum = 0;
+            historyData.forEach(item => {
+                if((item.no || "").trim() === currentRem) {
+                    if(item.source === 'pitch') pSum += (item.pitchResultNum || 0);
+                    if(item.source === 'count') cSum += (item.countValNum || 0);
+                }
+            });
+            remarkTotalPitch.innerHTML = pSum > 0 ? `<span style="font-size: 18px;">合計${pSum}枚</span>` : "";
+            remarkTotalCount.innerHTML = cSum > 0 ? `<span style="font-size: 18px;">合計${cSum}枚</span>` : "";
+        }
+
+        function updateLinkedValues(L, P, C, source) {
+            const numL = parseValue(L);
+            const numP = parseValue(P);
+            const numC = parseValue(C);
+            if (!isNaN(numL) && numL > 0) {
+                if (source === 'pitch' && !isNaN(numP) && numP > 0) {
+                    const calculatedQty = Math.ceil(numL / numP);
+                    countInput.value = calculatedQty.toString();
+                } else if (source === 'count' && !isNaN(numC) && numC > 0) {
+                    const calculatedWidth = Math.ceil(numL / numC);
+                    pitchInput.value = calculatedWidth.toString();
+                }
+            }
+        }
+
+        function calculate() {
+            const L = parseValue(totalLengthInput.value); 
+            const W = parseValue(pitchInput.value);
+            const N = parseValue(countInput.value);
+            resQuantity.innerText = "-"; resQtyRemainder.innerText = "-";
+            resWidth.innerText = "-"; resWidthRemainder.innerText = "-";
+            [unitQuantity, unitQtyRem, unitWidth, unitWidthRem].forEach(u => u.classList.add('hidden'));
+            pitchInput.classList.remove('text-[#0a84ff]', 'text-[#30d158]');
+            countInput.classList.remove('text-[#0a84ff]', 'text-[#30d158]');
+            labelPitch.classList.remove('text-[#0a84ff]', 'text-[#30d158]');
+            labelCount.classList.remove('text-[#0a84ff]', 'text-[#30d158]');
+            cardPitch.className = "bg-[#1c1c1e] p-3 rounded-2xl border-2 border-[#545458] flex flex-col items-start shadow-lg transition-all opacity-60 grayscale";
+            cardCount.className = "bg-[#1c1c1e] p-3 rounded-2xl border-2 border-[#545458] flex flex-col items-start shadow-lg transition-all opacity-60 grayscale";
+            
+            if (isNaN(L) || L <= 0 || (isNaN(W) && isNaN(N))) keypadSave.classList.add('opacity-50');
+            else keypadSave.classList.remove('opacity-50');
+
+            if (!inputSource) {
+                pitchInput.classList.add('text-[#0a84ff]');
+                labelPitch.classList.add('text-[#0a84ff]');
+                countInput.classList.add('text-[#30d158]');
+                labelCount.classList.add('text-[#30d158]');
+            }
+            if (isNaN(L) || (isNaN(W) && isNaN(N))) return;
+            if (inputSource === 'pitch') {
+                pitchInput.classList.add('text-[#0a84ff]'); labelPitch.classList.add('text-[#0a84ff]');
+                countInput.classList.add('text-[#0a84ff]'); labelCount.classList.add('text-[#0a84ff]');
+                if (W > 0) {
+                    const qty = Math.ceil(L / W); const remP = (qty * W) - L;
+                    resQuantity.innerText = formatNumber(qty); resQtyRemainder.innerText = formatNumber(remP);
+                    unitQuantity.classList.remove('hidden'); unitQtyRem.classList.remove('hidden');
+                    cardPitch.className = "bg-[#1c1c1e] p-3 rounded-2xl border-2 border-[#0a84ff] flex flex-col items-start shadow-lg transition-all shadow-[0_0_15px_rgba(10,132,255,0.3)]";
+                    const widthForN = Math.ceil(L / qty); const remN = (widthForN * qty) - L;
+                    resWidth.innerText = formatNumber(widthForN); resWidthRemainder.innerText = formatNumber(remN);
+                    unitWidth.classList.remove('hidden'); unitWidthRem.classList.remove('hidden');
+                    cardCount.className = "bg-[#1c1c1e] p-3 rounded-2xl border-2 border-[#30d158] flex flex-col items-start shadow-lg transition-all";
+                }
+            } else if (inputSource === 'count') {
+                pitchInput.classList.add('text-[#30d158]'); labelPitch.classList.add('text-[#30d158]');
+                countInput.classList.add('text-[#30d158]'); labelCount.classList.add('text-[#30d158]');
+                if (N > 0) {
+                    const width = Math.ceil(L / N); const remN = (width * N) - L;
+                    resWidth.innerText = formatNumber(width); resWidthRemainder.innerText = formatNumber(remN);
+                    unitWidth.classList.remove('hidden'); unitWidthRem.classList.remove('hidden');
+                    cardCount.className = "bg-[#1c1c1e] p-3 rounded-2xl border-2 border-[#30d158] flex flex-col items-start shadow-lg transition-all shadow-[0_0_15px_rgba(48,209,88,0.3)]";
+                    const qtyForW = Math.ceil(L / width); const remP = (qtyForW * width) - L;
+                    resQuantity.innerText = formatNumber(qtyForW); resQtyRemainder.innerText = formatNumber(remP);
+                    unitQuantity.classList.remove('hidden'); unitQtyRem.classList.remove('hidden');
+                    cardPitch.className = "bg-[#1c1c1e] p-3 rounded-2xl border-2 border-[#0a84ff] flex flex-col items-start shadow-lg transition-all";
+                }
+            }
+        }
+
+        function updateMemoDropdown() {
+            if (!memoDropdownList) return;
+            const uniqueMemos = new Set();
+            for (let i = 0; i < historyData.length; i++) {
+                if (historyData[i].no && historyData[i].no.trim() !== "") {
+                    uniqueMemos.add(historyData[i].no.trim());
+                    if (uniqueMemos.size >= 5) break;
+                }
+            }
+            memoDropdownList.innerHTML = '';
+            if (uniqueMemos.size === 0) {
+                const li = document.createElement('li');
+                li.className = 'p-3 text-[14px] text-gray-500 text-center';
+                li.innerText = '履歴がありません';
+                memoDropdownList.appendChild(li);
+                return;
+            }
+            uniqueMemos.forEach(memo => {
+                const li = document.createElement('li');
+                li.className = 'memo-dropdown-item text-center font-bold';
+                li.innerText = memo;
+                li.onclick = (e) => {
+                    e.preventDefault(); 
+                    inputNo.value = memo;
+                    memoDropdown.classList.add('hidden');
+                    calculate();
+                    saveInputs();
+                    updateRemarkTotals();
+                };
+                memoDropdownList.appendChild(li);
+            });
+        }
+
+        function updateHistoryTable(shouldSave = true) {
+            historyTableBody.innerHTML = '';
+            memoSummaryList.innerHTML = '';
+            let sumQ = 0, sumN = 0;
+            const separatorColor = "#545458"; 
+            const summaryByMemo = {};
+            const memoOrder = [];
+
+            historyData.forEach((item, idx) => {
+                const tr = document.createElement('tr');
+                tr.className = `border-t border-[${separatorColor}]`;
+                const memoKey = item.no || "（備考なし）";
+                if (!summaryByMemo[memoKey]) {
+                    summaryByMemo[memoKey] = { pitch: 0, count: 0 };
+                    memoOrder.push(memoKey);
+                }
+                const noHeader = item.no ? `<div class="mb-1 text-[13px] font-bold bg-[#48484a] px-2 rounded-full inline-block leading-normal text-white">${item.no}</div>` : '';
+                const dimPrefix = item.memoDim ? `<span class="text-[13px] text-[#ff9f0a] font-medium mr-1.5">L:${item.memoDim}</span>` : '';
+                const widthLabel = `<div class="text-[13px] text-[#c0c0c0] font-bold mt-0.5">W:${item.totalLength}</div>`;
+                const td1 = document.createElement('td');
+                td1.className = `py-1.5 px-1 border-r border-[${separatorColor}] cursor-pointer active:bg-gray-800`;
+                td1.onclick = () => loadHistoryToInput(item, 'pitch');
+                if (item.source === 'pitch') {
+                    td1.innerHTML = `<div class="flex flex-col items-center justify-center leading-tight">${noHeader}<div class="flex items-baseline justify-center">${dimPrefix}<span class="text-[16px] font-bold text-[#0a84ff]">${item.resQty}枚</span></div>${widthLabel}<div class="text-[12px] text-gray-400 mt-0.5">@${item.pitch} 残:${item.resQtyRem}</div></div>`;
+                    sumQ += (item.pitchResultNum || 0);
+                    summaryByMemo[memoKey].pitch += (item.pitchResultNum || 0);
+                } else td1.innerHTML = `<div class="text-gray-600 text-[14px]">-</div>`;
+                const td2 = document.createElement('td');
+                td2.className = `py-1.5 px-1 border-r border-[${separatorColor}] cursor-pointer active:bg-gray-800`;
+                td2.onclick = () => loadHistoryToInput(item, 'count');
+                if (item.source === 'count') {
+                    td2.innerHTML = `<div class="flex flex-col items-center justify-center leading-tight">${noHeader}<div class="flex items-baseline justify-center">${dimPrefix}<span class="text-[16px] font-bold text-[#30d158]">${item.count}枚</span></div>${widthLabel}<div class="text-[12px] text-gray-400 mt-0.5">@${item.resWidth}㎜ 残:${item.resWidthRem}</div></div>`;
+                    sumN += (item.countValNum || 0);
+                    summaryByMemo[memoKey].count += (item.countValNum || 0);
+                } else td2.innerHTML = `<div class="text-gray-600 text-[14px]">-</div>`;
+                const td3 = document.createElement('td');
+                td3.className = "py-0";
+                td3.innerHTML = `<button onclick="deleteHistoryRow(${idx})" class="p-1 text-red-500 active:text-red-600 w-full flex justify-center items-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>`;
+                tr.append(td1, td2, td3);
+                historyTableBody.appendChild(tr);
+            });
+            totalQtySum.innerText = sumQ > 0 ? formatNumber(sumQ) + "枚" : "-";
+            totalCountSum.innerText = sumN > 0 ? formatNumber(sumN) + "枚" : "-";
+            if (memoOrder.length > 0) {
+                memoSummaryBox.classList.remove('hidden');
+                memoOrder.forEach(key => {
+                    const data = summaryByMemo[key];
+                    const div = document.createElement('div');
+                    div.className = "bg-[#2c2c2e] p-2 px-3 rounded-xl flex flex-col gap-2 border border-[#545458]";
+                    div.innerHTML = `<div class="flex items-center justify-between"><div class="flex items-center flex-grow mr-2 overflow-hidden"><div class="text-[12px] text-gray-400 font-bold whitespace-nowrap mr-2">備考</div><input type="text" value="${key}" class="editable-memo text-[14px] w-full text-left" onchange="updateRemarkName('${key}', this.value)" placeholder=""></div><button onclick="deleteByRemark('${key}')" class="p-1 text-red-500 active:opacity-50 shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div><div class="grid grid-cols-2 gap-2"><div class="bg-[#1c1c1e] rounded-lg p-2 border-l-[3px] border-[#0a84ff] flex items-baseline justify-between"><div class="text-[12px] text-gray-400 font-bold">働き基準</div><div class="text-[16px] font-bold text-[#0a84ff] text-right">${data.pitch > 0 ? formatNumber(data.pitch) + "枚" : "-"}</div></div><div class="bg-[#1c1c1e] rounded-lg p-2 border-l-[3px] border-[#30d158] flex items-baseline justify-between"><div class="text-[12px] text-gray-400 font-bold">数量基準</div><div class="text-[16px] font-bold text-[#30d158] text-right">${data.count > 0 ? formatNumber(data.count) + "枚" : "-"}</div></div></div>`;
+                    memoSummaryList.appendChild(div);
+                });
+            } else memoSummaryBox.classList.add('hidden');
             updateMemoDropdown();
-        };
+            if(shouldSave) localStorage.setItem('waritsuke_history_v6', JSON.stringify(historyData));
+        }
+
+        function loadHistoryToInput(item, source) {
+            totalLengthInput.value = item.totalLength;
+            memoDimInput.value = item.memoDim || "";
+            inputNo.value = item.no || "";
+            if (source === 'pitch' && item.pitchVal) { pitchInput.value = item.pitchVal.replace(/,/g, ''); inputSource = 'pitch'; }
+            else if (source === 'count' && item.countVal) { countInput.value = item.countVal.replace(/,/g, ''); inputSource = 'count'; }
+            else {
+                if (item.source === 'pitch') { pitchInput.value = item.pitchVal.replace(/,/g, ''); inputSource = 'pitch'; }
+                else { countInput.value = item.countVal.replace(/,/g, ''); inputSource = 'count'; }
+            }
+            calculate(); saveInputs(); switchTab('calc'); updateRemarkTotals();
+        }
+
+        function setActiveField(fieldName) {
+            if (activeField && activeField !== fieldName && activeField !== 'inputNo') {
+                const prevInput = document.getElementById(activeField);
+                if (prevInput) formatInputDisplay(prevInput);
+            }
+            document.querySelectorAll('[id^="field-"]').forEach(el => {
+                el.classList.remove('ring-2', 'ring-inset', 'ring-orange-500', 'z-10', 'bg-[#2c2c2e]');
+            });
+            const el = document.getElementById('field-' + fieldName);
+            if(el) el.classList.add('ring-2', 'ring-inset', 'ring-orange-500', 'z-10', 'bg-[#2c2c2e]');
+            activeField = fieldName;
+            isNewEntry = true;
+            const currentInput = document.getElementById(activeField);
+            if (currentInput && activeField !== 'inputNo') currentInput.value = currentInput.value.replace(/,/g, '');
+        }
+
+        function handleKeypad(key) {
+            if (key === 'AC') {
+                clearAllFields();
+                return;
+            }
+            if (key === 'C') {
+                const input = document.getElementById(activeField);
+                if (input) input.value = '';
+                if (activeField === 'pitch' && inputSource === 'pitch') inputSource = null;
+                if (activeField === 'count' && inputSource === 'count') inputSource = null;
+                isNewEntry = true;
+                calculate();
+                saveInputs();
+                updateRemarkTotals();
+                return;
+            }
+            if (key === '保存') {
+                manualSaveToHistory();
+                return;
+            }
+            if (key === '⏎') {
+                if (activeField === 'addLength') {
+                    executeAddition();
+                } else {
+                    const fields = ['inputNo', 'memoDim', 'pitch', 'count', 'totalLength', 'addLength'];
+                    const idx = fields.indexOf(activeField);
+                    setActiveField(fields[(idx + 1) % fields.length]);
+                }
+                return;
+            }
+            const input = document.getElementById(activeField);
+            if (!input) return;
+            if (activeField === 'inputNo') {
+                let s = input.value;
+                if ((key === '00' || key === '000') && (isNewEntry || s === '')) return;
+                input.value = isNewEntry ? key.toString() : s + key;
+                isNewEntry = false;
+                saveInputs();
+                updateRemarkTotals();
+                return;
+            }
+            let currentStr = input.value.replace(/,/g, '');
+            if (isNewEntry) currentStr = '';
+            if ((key === '00' || key === '000') && currentStr === '') return;
+            let nextStr = currentStr + key;
+            input.value = nextStr;
+            isNewEntry = false;
+            if (activeField === 'pitch') inputSource = 'pitch';
+            if (activeField === 'count') inputSource = 'count';
+            if (activeField === 'pitch') updateLinkedValues(totalLengthInput.value, nextStr, countInput.value, 'pitch');
+            else if (activeField === 'count') updateLinkedValues(totalLengthInput.value, pitchInput.value, nextStr, 'count');
+            else if (activeField === 'totalLength') updateLinkedValues(nextStr, pitchInput.value, countInput.value, inputSource || 'pitch');
+            calculate();
+            saveInputs();
+        }
+
+        function executeAddition() {
+            const current = parseValue(totalLengthInput.value) || 0;
+            const add = parseValue(addLengthInput.value);
+            if (!isNaN(add)) {
+                const nextTotal = (current + add).toString();
+                totalLengthInput.value = nextTotal;
+                addLengthInput.value = "";
+                isNewEntry = true;
+                updateLinkedValues(nextTotal, pitchInput.value, countInput.value, inputSource);
+                formatInputDisplay(totalLengthInput);
+                calculate(); 
+                saveInputs();
+            }
+            setActiveField('addLength');
+        }
+
+        function clearAllFields() { 
+            inputSource = null;
+            [totalLengthInput, addLengthInput, memoDimInput, pitchInput, countInput, inputNo].forEach(el => { 
+                if (el) el.value = '';
+            }); 
+            calculate(); saveInputs(); 
+            setActiveField('totalLength');
+            updateRemarkTotals();
+        }
+
+        function manualSaveToHistory() {
+            const L = parseValue(totalLengthInput.value); 
+            const W = parseValue(pitchInput.value);
+            const N = parseValue(countInput.value);
+            if (isNaN(L) || !inputSource) return;
+            let historyEntry = { 
+                id: Date.now().toString(),
+                source: inputSource, 
+                totalLength: formatNumber(L), 
+                no: inputNo.value, 
+                memoDim: memoDimInput.value 
+            };
+            if (inputSource === 'pitch' && !isNaN(W) && W > 0) {
+                const qty = Math.ceil(L / W); const remP = (qty * W) - L;
+                historyEntry.pitchVal = formatNumber(W); 
+                historyEntry.pitchResult = formatNumber(qty);
+                historyEntry.pitchResultNum = qty; 
+                historyEntry.pitchRem = formatNumber(remP);
+            } else if (inputSource === 'count' && !isNaN(N) && N > 0) {
+                const width = Math.ceil(L / N); const remN = (width * N) - L;
+                historyEntry.countVal = formatNumber(N); 
+                historyEntry.countValNum = N;
+                historyEntry.countResult = formatNumber(width); 
+                historyEntry.countRem = formatNumber(remN);
+            } else return;
+            historyData.unshift(historyEntry);
+            if (historyData.length > 50) historyData = historyData.slice(0, 50);
+            updateHistoryTable();
+            updateRemarkTotals();
+            saveToast.classList.add('show'); setTimeout(() => saveToast.classList.remove('show'), 1200);
+        }
+
+        function deleteHistoryRow(idx) { historyData.splice(idx, 1); updateHistoryTable(); updateRemarkTotals(); }
+        function showConfirmModal() { if (historyData.length > 0) confirmModal.classList.add('show'); }
+        function hideConfirmModal() { confirmModal.classList.remove('show'); }
+        function clearHistory() { historyData = []; localStorage.removeItem('waritsuke_history_v6'); updateHistoryTable(); hideConfirmModal(); updateRemarkTotals(); }
 
         function initSwipeGestures() {
             document.body.addEventListener('touchstart', (e) => { 
@@ -512,215 +761,16 @@
             document.getElementById('screen-' + tabName).classList.add('active');
             document.getElementById('tab-' + tabName).classList.add('active');
             if (tabName === 'history') updateHistoryTable(false);
+            if(activeField && activeField !== 'inputNo'){
+                const input = document.getElementById(activeField);
+                if(input) formatInputDisplay(input);
+            }
             window.scrollTo(0, 0);
         }
 
         function saveInputs() {
             const inputs = { totalLength: totalLengthInput.value, memoDim: memoDimInput.value, pitch: pitchInput.value, count: countInput.value, inputNo: inputNo.value };
-            localStorage.setItem('waritsuke_inputs', JSON.stringify(inputs));
-        }
-
-        function formatNumber(num) { return (num === null || isNaN(num) || num === undefined) ? "-" : Math.round(num).toLocaleString('ja-JP'); }
-        
-        function parseValue(val) { 
-            if (!val) return NaN; 
-            let str = val.toString().replace(/[０-９．－]/g, function(s) {
-                return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
-            });
-            return parseFloat(str.replace(/[^-0-9.]/g, '')); 
-        }
-
-        function formatInputDisplay(input) {
-            if (input.id === 'inputNo' || input.id === 'addLength') return;
-            let num = parseValue(input.value);
-            if (isNaN(num)) { input.value = ""; return; }
-            input.value = num.toLocaleString('ja-JP');
-        }
-
-        function calculate() {
-            const L = parseValue(totalLengthInput.value); 
-            const W = parseValue(pitchInput.value);
-            const N = parseValue(countInput.value);
-            resQuantity.innerText = "-"; resQtyRemainder.innerText = "-";
-            resWidth.innerText = "-"; resWidthRemainder.innerText = "-";
-            [unitQuantity, unitQtyRem, unitWidth, unitWidthRem].forEach(u => u.classList.add('hidden'));
-            
-            if (isNaN(L) || (isNaN(W) && isNaN(N))) { resetCalculationUI(); return; }
-            
-            if (inputSource === 'pitch') {
-                pitchInput.classList.remove('text-auto', 'text-count'); pitchInput.classList.add('text-pitch');
-                countInput.classList.remove('text-auto', 'text-count'); countInput.classList.add('text-pitch');
-                starPitch.classList.add('active'); starCount.classList.remove('active');
-                if (W > 0) {
-                    const qty = Math.ceil(L / W); const remP = (qty * W) - L;
-                    countInput.value = qty.toLocaleString('ja-JP');
-                    resQuantity.innerText = formatNumber(qty); resQtyRemainder.innerText = formatNumber(remP);
-                    unitQuantity.classList.remove('hidden'); unitQtyRem.classList.remove('hidden');
-                    const widthForN = Math.ceil(L / qty); const remN = (widthForN * qty) - L;
-                    resWidth.innerText = formatNumber(widthForN); resWidthRemainder.innerText = formatNumber(remN);
-                    unitWidth.classList.remove('hidden'); unitWidthRem.classList.remove('hidden');
-                }
-            } else if (inputSource === 'count') {
-                countInput.classList.remove('text-auto', 'text-pitch'); countInput.classList.add('text-count');
-                pitchInput.classList.remove('text-auto', 'text-pitch'); pitchInput.classList.add('text-count');
-                starCount.classList.add('active'); starPitch.classList.remove('active');
-                if (N > 0) {
-                    const width = Math.ceil(L / N); const remN = (width * N) - L;
-                    pitchInput.value = width.toLocaleString('ja-JP');
-                    resWidth.innerText = formatNumber(width); resWidthRemainder.innerText = formatNumber(remN);
-                    unitWidth.classList.remove('hidden'); unitWidthRem.classList.remove('hidden');
-                    const qtyForW = Math.ceil(L / width); const remP = (qtyForW * width) - L;
-                    resQuantity.innerText = formatNumber(qtyForW); resQtyRemainder.innerText = formatNumber(remP);
-                    unitQuantity.classList.remove('hidden'); unitQtyRem.classList.remove('hidden');
-                }
-            }
-        }
-
-        function resetCalculationUI() {
-            pitchInput.classList.remove('text-pitch', 'text-count', 'text-auto');
-            countInput.classList.remove('text-pitch', 'text-count', 'text-auto');
-            starPitch.classList.remove('active'); starCount.classList.remove('active');
-            resQuantity.innerText = "-"; resQtyRemainder.innerText = "-";
-            resWidth.innerText = "-"; resWidthRemainder.innerText = "-";
-            [unitQuantity, unitQtyRem, unitWidth, unitWidthRem].forEach(u => u.classList.add('hidden'));
-        }
-
-        function updateMemoDropdown() {
-            if (!memoDropdownList) return;
-            
-            const uniqueMemos = new Set();
-            for (let i = historyData.length - 1; i >= 0; i--) {
-                if (historyData[i].no && historyData[i].no.trim() !== "") {
-                    uniqueMemos.add(historyData[i].no.trim());
-                    if (uniqueMemos.size >= 5) break;
-                }
-            }
-
-            memoDropdownList.innerHTML = '';
-            
-            if (uniqueMemos.size === 0) {
-                const li = document.createElement('li');
-                li.className = 'p-3 text-[14px] text-gray-500 text-center';
-                li.innerText = '履歴がありません';
-                memoDropdownList.appendChild(li);
-                return;
-            }
-
-            uniqueMemos.forEach(memo => {
-                const li = document.createElement('li');
-                li.className = 'memo-dropdown-item text-center font-bold';
-                li.innerText = memo;
-                li.onclick = (e) => {
-                    e.preventDefault(); 
-                    inputNo.value = memo;
-                    memoDropdown.classList.add('hidden');
-                    calculate();
-                    saveInputs();
-                };
-                memoDropdownList.appendChild(li);
-            });
-        }
-
-        function updateHistoryTable(shouldSave = true) {
-            historyTableBody.innerHTML = '';
-            memoSummaryList.innerHTML = '';
-            let sumQ = 0, sumN = 0;
-            const separatorColor = "#545458"; 
-            const summaryByMemo = {};
-
-            historyData.slice().reverse().forEach((item, originalIdx) => {
-                const idx = historyData.length - 1 - originalIdx;
-                const tr = document.createElement('tr');
-                tr.className = `border-t border-[${separatorColor}]`;
-                const memoKey = item.no || "（備考なし）";
-                if (!summaryByMemo[memoKey]) summaryByMemo[memoKey] = { pitch: 0, count: 0 };
-
-                const noHeader = item.no ? `<div class="mb-1 text-[13px] font-bold bg-[#48484a] px-2 rounded-full inline-block leading-normal text-white">${item.no}</div>` : '';
-                const dimPrefix = item.memo ? `<span class="text-[13px] text-[#ff9f0a] font-medium mr-1.5">L:${item.memo}</span>` : '';
-                const widthLabel = `<div class="text-[13px] text-[#c0c0c0] font-bold mt-0.5">W:${item.totalLength}</div>`;
-
-                // 働き基準セル
-                const td1 = document.createElement('td');
-                td1.className = `py-1.5 px-1 border-r border-[${separatorColor}] cursor-pointer active:bg-gray-800`;
-                td1.onclick = () => loadHistoryToInput(item, 'pitch');
-                if (item.source === 'pitch') {
-                    td1.innerHTML = `
-                        <div class="flex flex-col items-center justify-center leading-tight">
-                            ${noHeader}
-                            <div class="flex items-baseline justify-center">
-                                ${dimPrefix}
-                                <span class="text-[16px] font-bold text-[#0a84ff]">${item.pitchResult}枚</span>
-                            </div>
-                            ${widthLabel}
-                            <div class="text-[12px] text-gray-400 mt-0.5">@${item.pitchVal} 残:${item.pitchRem}</div>
-                        </div>`;
-                    sumQ += (item.pitchResultNum || 0);
-                    summaryByMemo[memoKey].pitch += (item.pitchResultNum || 0);
-                } else { td1.innerHTML = `<div class="text-gray-600 text-[14px]">-</div>`; }
-
-                // 数量基準セル
-                const td2 = document.createElement('td');
-                td2.className = `py-1.5 px-1 border-r border-[${separatorColor}] cursor-pointer active:bg-gray-800`;
-                td2.onclick = () => loadHistoryToInput(item, 'count');
-                if (item.source === 'count') {
-                    td2.innerHTML = `
-                        <div class="flex flex-col items-center justify-center leading-tight">
-                            ${noHeader}
-                            <div class="flex items-baseline justify-center">
-                                ${dimPrefix}
-                                <span class="text-[16px] font-bold text-[#30d158]">${item.countVal}枚</span>
-                            </div>
-                            ${widthLabel}
-                            <div class="text-[12px] text-gray-400 mt-0.5">@${item.countResult}㎜ 残:${item.countRem}</div>
-                        </div>`;
-                    sumN += (item.countValNum || 0);
-                    summaryByMemo[memoKey].count += (item.countValNum || 0);
-                } else { td2.innerHTML = `<div class="text-gray-600 text-[14px]">-</div>`; }
-                
-                const td3 = document.createElement('td');
-                td3.className = "py-0";
-                td3.innerHTML = `<button onclick="deleteHistoryRow(${idx})" class="p-1 text-red-500 active:text-red-600 w-full flex justify-center items-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>`;
-                tr.append(td1, td2, td3);
-                historyTableBody.appendChild(tr);
-            });
-
-            totalQtySum.innerText = sumQ > 0 ? formatNumber(sumQ) + "枚" : "-";
-            totalCountSum.innerText = sumN > 0 ? formatNumber(sumN) + "枚" : "-";
-
-            const memoKeys = Object.keys(summaryByMemo);
-            if (memoKeys.length > 0) {
-                memoSummaryBox.classList.remove('hidden');
-                memoKeys.forEach(key => {
-                    const data = summaryByMemo[key];
-                    const div = document.createElement('div');
-                    div.className = "bg-[#2c2c2e] p-2 px-3 rounded-xl flex flex-col gap-2 border border-[#545458]";
-                    div.innerHTML = `
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center flex-grow mr-2 overflow-hidden">
-                                <div class="text-[12px] text-gray-400 font-bold whitespace-nowrap mr-2">備考</div>
-                                <input type="text" value="${key}" class="editable-memo text-[14px] w-full text-left" onchange="updateRemarkName('${key}', this.value)" placeholder="">
-                            </div>
-                            <button onclick="deleteByRemark('${key}')" class="p-1 text-red-500 active:opacity-50 shrink-0">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                            </button>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="bg-[#1c1c1e] rounded-lg p-2 border-l-[3px] border-[#0a84ff] flex items-baseline justify-between">
-                                <div class="text-[12px] text-gray-400 font-bold">働き基準</div>
-                                <div class="text-[16px] font-bold text-[#0a84ff] text-right">${data.pitch > 0 ? formatNumber(data.pitch) + "枚" : "-"}</div>
-                            </div>
-                            <div class="bg-[#1c1c1e] rounded-lg p-2 border-l-[3px] border-[#30d158] flex items-baseline justify-between">
-                                <div class="text-[12px] text-gray-400 font-bold">数量基準</div>
-                                <div class="text-[16px] font-bold text-[#30d158] text-right">${data.count > 0 ? formatNumber(data.count) + "枚" : "-"}</div>
-                            </div>
-                        </div>
-                    `;
-                    memoSummaryList.appendChild(div);
-                });
-            } else { memoSummaryBox.classList.add('hidden'); }
-            
-            updateMemoDropdown();
-            if (shouldSave) localStorage.setItem('waritsuke_history', JSON.stringify(historyData));
+            localStorage.setItem('waritsuke_inputs_v4', JSON.stringify(inputs));
         }
 
         function updateRemarkName(oldValue, newValue) {
@@ -728,144 +778,96 @@
             const finalNewValue = newValue === "（備考なし）" ? "" : newValue;
             historyData.forEach(item => { if ((item.no || "") === finalOldValue) item.no = finalNewValue; });
             updateHistoryTable();
+            updateRemarkTotals();
         }
 
         function deleteByRemark(remark) {
             const finalRemark = remark === "（備考なし）" ? "" : remark;
             historyData = historyData.filter(item => (item.no || "") !== finalRemark);
             updateHistoryTable();
+            updateRemarkTotals();
         }
 
-        function loadHistoryToInput(item, source) {
-            totalLengthInput.value = item.totalLength;
-            memoDimInput.value = item.memo || "";
-            inputNo.value = item.no || "";
-            if (source === 'pitch' && item.pitchVal) { pitchInput.value = item.pitchVal; inputSource = 'pitch'; }
-            else if (source === 'count' && item.countVal) { countInput.value = item.countVal; inputSource = 'count'; }
-            else {
-                if (item.source === 'pitch') { pitchInput.value = item.pitchVal; inputSource = 'pitch'; }
-                else { countInput.value = item.countVal; inputSource = 'count'; }
+        window.onload = function() {
+            const savedHistory = localStorage.getItem('waritsuke_history_v6');
+            if (savedHistory) { try { historyData = JSON.parse(savedHistory); updateHistoryTable(false); } catch(e) {} }
+            const savedInputs = localStorage.getItem('waritsuke_inputs_v4');
+            if (savedInputs) {
+                try {
+                    const inputs = JSON.parse(savedInputs);
+                    totalLengthInput.value = inputs.totalLength || "";
+                    memoDimInput.value = inputs.memoDim || "";
+                    pitchInput.value = inputs.pitch || "";
+                    countInput.value = inputs.count || "";
+                    inputNo.value = inputs.inputNo || "";
+                    if (pitchInput.value !== "") inputSource = 'pitch';
+                    else if (countInput.value !== "") inputSource = 'count';
+                    calculate();
+                } catch(e) {}
             }
-            [totalLengthInput, memoDimInput, pitchInput, countInput, inputNo].forEach(el => { if(el) formatInputDisplay(el); });
-            calculate(); saveInputs(); switchTab('calc');
-        }
+            initSwipeGestures();
+            updateMemoDropdown();
+            setActiveField('totalLength');
+            updateRemarkTotals();
 
-        function manualSaveToHistory() {
-            const L = parseValue(totalLengthInput.value); 
-            const W = parseValue(pitchInput.value);
-            const N = parseValue(countInput.value);
-            if (isNaN(L) || !inputSource) return;
-            let historyEntry = { source: inputSource, totalLength: formatNumber(L), no: inputNo.value, memo: memoDimInput.value };
-            if (inputSource === 'pitch' && !isNaN(W) && W > 0) {
-                const qty = Math.ceil(L / W); const remP = (qty * W) - L;
-                historyEntry.pitchVal = formatNumber(W); historyEntry.pitchResult = formatNumber(qty);
-                historyEntry.pitchResultNum = qty; historyEntry.pitchRem = formatNumber(remP);
-            } else if (inputSource === 'count' && !isNaN(N) && N > 0) {
-                const width = Math.ceil(L / N); const remN = (width * N) - L;
-                historyEntry.countVal = formatNumber(N); historyEntry.countValNum = N;
-                historyEntry.countResult = formatNumber(width); historyEntry.countRem = formatNumber(remN);
-            } else return;
-            historyData.push(historyEntry); updateHistoryTable();
-            saveToast.classList.add('show'); setTimeout(() => saveToast.classList.remove('show'), 1200);
-        }
-
-        function deleteHistoryRow(idx) { historyData.splice(idx, 1); updateHistoryTable(); }
-
-        function clearSingleField(id) { 
-            const el = document.getElementById(id); el.value = ''; 
-            if (id === 'pitch' || id === 'count') { inputSource = null; pitchInput.value = ''; countInput.value = ''; }
-            calculate(); saveInputs(); el.focus(); 
-        }
-
-        function clearAllFields() { 
-            inputSource = null;
-            [totalLengthInput, addLengthInput, memoDimInput, pitchInput, countInput, inputNo].forEach(el => { 
-                if (el) { el.value = ''; }
-            }); 
-            calculate(); saveInputs(); 
-        }
-
-        function executeAddition() {
-            const current = parseValue(totalLengthInput.value) || 0;
-            const add = parseValue(addLengthInput.value);
-            if (!isNaN(add)) {
-                totalLengthInput.value = (current + add).toString();
-                formatInputDisplay(totalLengthInput); addLengthInput.value = "";
-                calculate(); saveInputs();
+            if (memoDropdownBtn) {
+                memoDropdownBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); e.stopPropagation();
+                    if (memoDropdown.classList.contains('hidden')) {
+                        updateMemoDropdown(); memoDropdown.classList.remove('hidden');
+                    } else memoDropdown.classList.add('hidden');
+                });
             }
-            addLengthInput.focus();
-        }
 
-        function showConfirmModal() { if (historyData.length > 0) confirmModal.classList.add('show'); }
-        function hideConfirmModal() { confirmModal.classList.remove('show'); }
-        function clearHistory() { historyData = []; localStorage.removeItem('waritsuke_history'); updateHistoryTable(false); hideConfirmModal(); }
-
-        [totalLengthInput, addLengthInput, memoDimInput, pitchInput, countInput].forEach(el => {
-            if (!el) return;
-            el.addEventListener('focus', (e) => { 
-                if (e.target.id !== 'addLength') { 
-                    const val = parseValue(e.target.value); if (!isNaN(val)) e.target.value = val; 
-                } 
-                setTimeout(() => e.target.setSelectionRange(0, e.target.value.length), 10); 
-            });
-            el.addEventListener('input', (e) => { 
-                if (e.target.id === 'pitch' || e.target.id === 'count') {
-                    if (e.target.value === "") { pitchInput.value = ""; countInput.value = ""; inputSource = null; }
-                    else { inputSource = e.target.id; }
-                }
-                if (e.target.id !== 'addLength') { calculate(); saveInputs(); }
-            });
-            el.addEventListener('blur', (e) => { 
-                if (e.target.id !== 'addLength') { formatInputDisplay(e.target); saveInputs(); }
-            });
-            el.addEventListener('keydown', (e) => { 
-                if (e.key === 'Enter') {
-                    if (e.target.id === 'addLength') executeAddition(); 
-                    else e.target.blur();
+            document.addEventListener('click', (e) => {
+                if (memoDropdown && !memoDropdown.classList.contains('hidden')) {
+                    if (!memoDropdown.contains(e.target)) memoDropdown.classList.add('hidden');
                 }
             });
-        });
 
-        if (inputNo) {
-            inputNo.addEventListener('focus', (e) => {
-                setTimeout(() => e.target.setSelectionRange(0, e.target.value.length), 10);
+            [totalLengthInput, addLengthInput, memoDimInput, pitchInput, countInput, inputNo].forEach(el => {
+                if (!el) return;
+                el.addEventListener('focus', (e) => {
+                    setActiveField(e.target.id);
+                    if (e.target.id !== 'inputNo') {
+                        const val = parseValue(e.target.value); 
+                        if (!isNaN(val)) e.target.value = val;
+                    }
+                    setTimeout(() => {
+                        try { e.target.setSelectionRange(0, e.target.value.length); } catch(err){}
+                    }, 10);
+                });
+                el.addEventListener('input', (e) => {
+                    if (e.target.id === 'pitch') {
+                        inputSource = 'pitch';
+                        updateLinkedValues(totalLengthInput.value, e.target.value, countInput.value, 'pitch');
+                    } else if (e.target.id === 'count') {
+                        inputSource = 'count';
+                        updateLinkedValues(totalLengthInput.value, pitchInput.value, e.target.value, 'count');
+                    } else if (e.target.id === 'totalLength') {
+                        updateLinkedValues(e.target.value, pitchInput.value, countInput.value, inputSource || 'pitch');
+                    }
+                    if (e.target.id !== 'addLength') {
+                        calculate();
+                        saveInputs();
+                    }
+                    if (e.target.id === 'inputNo') {
+                        updateRemarkTotals();
+                    }
+                });
+                el.addEventListener('blur', (e) => {
+                    formatInputDisplay(e.target);
+                    saveInputs();
+                });
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        if (e.target.id === 'addLength') executeAddition();
+                        else e.target.blur();
+                    }
+                });
+                el.addEventListener('click', (e) => { e.stopPropagation(); });
             });
-            inputNo.addEventListener('input', () => { calculate(); saveInputs(); });
-            inputNo.addEventListener('blur', (e) => { formatInputDisplay(e.target); saveInputs(); });
-            inputNo.addEventListener('keydown', (e) => { if (e.key === 'Enter') e.target.blur(); });
-            inputNo.addEventListener('click', (e) => { e.stopPropagation(); });
-        }
-
-        if (memoDropdownBtn) {
-            memoDropdownBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (memoDropdown.classList.contains('hidden')) {
-                    updateMemoDropdown();
-                    memoDropdown.classList.remove('hidden');
-                    inputNo.focus();
-                } else {
-                    memoDropdown.classList.add('hidden');
-                }
-            });
-        }
-
-        document.addEventListener('click', (e) => {
-            if (memoDropdown && !memoDropdown.classList.contains('hidden')) {
-                if (!memoDropdown.contains(e.target)) {
-                    memoDropdown.classList.add('hidden');
-                }
-            }
-        });
-        
-        document.addEventListener('touchstart', (e) => {
-            if (memoDropdown && !memoDropdown.classList.contains('hidden')) {
-                if (e.target !== inputNo && e.target !== memoDropdownBtn && !memoDropdownBtn.contains(e.target) && !memoDropdown.contains(e.target)) {
-                    memoDropdown.classList.add('hidden');
-                }
-            }
-        }, { passive: true });
-
+        };
     </script>
 </body>
 </html>
